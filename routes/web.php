@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\ItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // 追記
+    Route::get('/item/index', [ItemController::class, 'index'])->name('item.index');
+    Route::get('/item/create', [ItemController::class, 'create'])->name('item.create');
+    Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
+    Route::post('/item', [ItemController::class, 'store'])->name('item.store');
 });
 
 require __DIR__.'/auth.php';
