@@ -19,8 +19,11 @@ return new class extends Migration
             $table->string("profile");
             $table->string("images")->nullable();
             $table->string("place_purchase")->nullable();
-            $table->foreignId("user_id")->constrained('users')->onDelete('cascade');
             $table->timestamps();
+            
+            $table->foreignId('user_id')->constrained()
+                                        ->onDelete('cascade');
+
         });
     }
 
